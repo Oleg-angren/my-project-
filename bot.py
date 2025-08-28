@@ -1,29 +1,37 @@
+import asyncio
+import logging
 from aiogram import Bot, Dispatcher
-from aiogram.types import Message
 from aiogram.filters import Command
+from aiogram.types import Message
+import os
 
-# Замени на свой токен
-API_TOKEN = '8082307822:AAFWJBO01AZhgLXyKC2s-bO9NK08PvNT7h0'
+# Логирование
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-# Создаём бота и диспетчер
-bot = Bot(token=API_TOKEN)
+# Токен
+BOT_TOKEN = "8082307822:AAFWJBO01AZhgLXyKC2s-bO9NK08PvNT7h0"
+
+# Бот и диспетчер
+bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
-# Обработчик команды /start
+# Обработчик /start
 @dp.message(Command("start"))
-async def start_handler(message: Message):
-    await message.answer("Привет! Я бот на aiogram 3!")
+async def cmd_start(message: Message):
+    await message.answer("🚀 Бот работает 24/7 на Render (Worker)!")
 
+# Эхо
 @dp.message()
 async def echo(message: Message):
     await message.answer(f"Ты сказал: {message.text}")
 
-# Запуск бота
+# Запуск
 async def main():
-    print("Бот запущен...")
+    logger.info("Бот запускается...")
+    await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 
-# Запускаем
 if __name__ == "__main__":
-    import asyncio
-    asyncio.run(main())
+   asyncio.run(main())
+
