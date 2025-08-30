@@ -19,7 +19,7 @@ dp = Dispatcher()
 # Обработчик /start
 @dp.message(Command("start"))
 async def cmd_start(message: Message):
-    await message.answer("🚀 Бот работает 24/7 на Render (Worker)!")
+    await message.answer("🚀 Бот работает в виртуальном экране")
 
 # Эхо
 @dp.message()
