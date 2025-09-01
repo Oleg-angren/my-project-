@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Токен
-BOT_TOKEN = "8082307822:AAFWJBO01AZhgLXyKC2s-bO9NK08PvNT7h0"
+BOT_TOKEN = "7788110191:AAHTtyz6uDcPq3eX0Xykqon4LJMTd7aPUjI"
 
 # Бот и диспетчер
 bot = Bot(token=BOT_TOKEN)
@@ -19,7 +19,7 @@ dp = Dispatcher()
 # Обработчик /start
 @dp.message(Command("start"))
 async def cmd_start(message: Message):
-    await message.answer("🚀 Бот работает 24/7 на Render (Worker)!")
+    await message.answer("🚀 Бот работает на  pythonhere !")
 
 # Эхо
 @dp.message()
